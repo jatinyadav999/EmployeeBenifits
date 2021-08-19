@@ -1,29 +1,15 @@
-package com.knoldus.entity;
+package com.knoldus.model;
 
-import org.springframework.boot.autoconfigure.domain.EntityScan;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
-
-@Document(collection = "registeration")
-public class Employee {
-    @Id
+public class EmployeeModel {
     private int id;
     private String name;
     private String dept;
     private String email;
-    private String token;
-
-    public Employee(){
-
-    }
-
-    public Employee(int id,String name,String dept,String email,String token){
+    public EmployeeModel(int id,String name,String dept,String email){
         this.id = id;
         this.name = name;
         this.dept = dept;
         this.email = email;
-        this.token = token;
-
     }
 
     public int getId() {
@@ -58,22 +44,13 @@ public class Employee {
         this.email = email;
     }
 
-    public String getToken() {
-        return token;
-    }
-
-    public void setToken(String token) {
-        this.token = token;
-    }
-
     @Override
     public String toString() {
-        return "Employee{" +
+        return "EmployeeModel{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", dept='" + dept + '\'' +
                 ", email='" + email + '\'' +
-                ", token='" + token + '\'' +
                 '}';
     }
 }

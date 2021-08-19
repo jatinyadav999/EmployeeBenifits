@@ -1,6 +1,7 @@
 package com.knoldus;
 
 import com.knoldus.entity.Employee;
+import com.knoldus.model.EmployeeModel;
 import com.knoldus.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,7 +13,7 @@ public class EmployeeController {
     @Autowired
     private EmployeeService employeeService;
     @PostMapping("/add")
-    public String saveEmployee(@RequestBody Employee employee){
-        return employeeService.saveEmployee(employee);
+    public String saveEmployee(@RequestBody EmployeeModel employeeModel) throws Exception{
+        return employeeService.saveEmployee(employeeModel);
     }
 }

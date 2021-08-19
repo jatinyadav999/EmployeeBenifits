@@ -1,6 +1,8 @@
 package com.knoldus.service;
 
 import com.knoldus.entity.Employee;
+import com.knoldus.exception.EmployeeException;
+import com.knoldus.model.EmployeeModel;
 import com.knoldus.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,11 +15,22 @@ import java.math.*;
 public class EmployeeService {
     @Autowired
     private EmployeeRepository employeeRepository;
-    public String saveEmployee(Employee employee){
+    public String saveEmployee(EmployeeModel employeeModel) throws Exception{
+        String token = generateUuid();
+        Employee employee = new Employee();
+        employee.setId(employeeModel.getId());
+        employee.setName(employeeModel.getName());
+        employee.setDept(employeeModel.getDept());
+        employee.setEmail(employeeModel.getEmail());
+        String employeeEmail = employee.getEmail();
+        if(employeeEmail.contains("@gmail.com")) {
+            employee.setToken(token);
+        }
+        else{
+          throw new EmployeeException("Please Provide The Valid Email");
+        }
         employeeRepository.save(employee);
-        String random = generateUuid();
-        System.out.println("randomOne=========="+random);
-        return  generateUuid();
+        return  token;
     }
 
     public String generateUuid(){
