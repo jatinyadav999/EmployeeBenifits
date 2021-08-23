@@ -15,8 +15,9 @@ import java.math.*;
 public class EmployeeService {
     @Autowired
     private EmployeeRepository employeeRepository;
-    public String saveEmployee(EmployeeModel employeeModel) throws Exception{
-        String token = generateUuid();
+    
+    public UUID saveEmployee(EmployeeModel employeeModel) throws Exception{
+      UUID   token = generateUuid();
         Employee employee = new Employee();
         employee.setId(employeeModel.getId());
         employee.setName(employeeModel.getName());
@@ -29,12 +30,13 @@ public class EmployeeService {
         else{
           throw new EmployeeException("Please Provide The Valid Email");
         }
+
         employeeRepository.save(employee);
-        return  token;
+                 return  token;
     }
 
-    public String generateUuid(){
-       String randomUuid =  UUID.randomUUID().toString();
+    public UUID generateUuid(){
+       UUID randomUuid =  UUID.randomUUID();
        return randomUuid;
 
     }

@@ -4,6 +4,8 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.UUID;
+
 @Document(collection = "registeration")
 public class Employee {
     @Id
@@ -11,13 +13,13 @@ public class Employee {
     private String name;
     private String dept;
     private String email;
-    private String token;
+    private UUID token;
 
     public Employee(){
 
     }
 
-    public Employee(int id,String name,String dept,String email,String token){
+    public Employee(int id,String name,String dept,String email,UUID token){
         this.id = id;
         this.name = name;
         this.dept = dept;
@@ -58,11 +60,11 @@ public class Employee {
         this.email = email;
     }
 
-    public String getToken() {
+    public UUID getToken() {
         return token;
     }
 
-    public void setToken(String token) {
+    public void setToken(UUID token) {
         this.token = token;
     }
 

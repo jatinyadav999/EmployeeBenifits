@@ -8,12 +8,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.UUID;
+
 @RestController
 public class EmployeeController {
     @Autowired
     private EmployeeService employeeService;
     @PostMapping("/add")
-    public String saveEmployee(@RequestBody EmployeeModel employeeModel) throws Exception{
+    public UUID saveEmployee(@RequestBody EmployeeModel employeeModel) throws Exception{
         return employeeService.saveEmployee(employeeModel);
     }
+
 }
