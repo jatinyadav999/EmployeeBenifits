@@ -33,24 +33,11 @@ class EmployeeApplicationTests {
 	void contextLoads() {
 	}
 
-//	@Test
-//	public void saveEmployee() throws Exception {
-//		EmployeeModel employeeModel = new EmployeeModel();
-//		System.out.println("employeeModel==="+employeeModel);
-//		EmployeeService employeeService = new EmployeeService();
-//		String uuid = employeeService.generateUuid();
-//		System.out.println("uuid==="+uuid);
-//	String saveEmployee =	employeeService.saveEmployee(employeeModel);
-//	System.out.println("saveEmployee==="+saveEmployee);
-//		assertAll("tweetName", () -> assertEquals("06f4f2e4-2eb4-4083-9e2e-21907979fe58",
-//				employeeService.saveEmployee(employeeModel)));
-//	}
 
 	@Test
 	public void ifEmailIsValid() throws Exception{
 	UUID uuid =	employeeService.generateUuid();
-	//EmployeeModel employeeModel = new EmployeeModel(5,"Akshay","marketing","Aksahy.dhama@gmail.com");
-	Employee employee = new Employee(5,"Akshay","marketing","akshay.dhama@gmail.com",uuid);
+		Employee employee = new Employee(5,"Akshay","marketing","akshay.dhama@gmail.com",uuid);
 	 when(employeeRepository.save(employee)).thenReturn(employee);
 	 assertEquals(uuid,employee.getToken());
 

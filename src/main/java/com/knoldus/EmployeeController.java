@@ -14,9 +14,16 @@ import java.util.UUID;
 public class EmployeeController {
     @Autowired
     private EmployeeService employeeService;
-    @PostMapping("/add")
-    public UUID saveEmployee(@RequestBody EmployeeModel employeeModel) throws Exception{
-        return employeeService.saveEmployee(employeeModel);
+    @PostMapping("/employee/registration")
+    public UUID saveEmployee(@RequestBody EmployeeModel employeeModel) {
+        UUID uuid = null;
+        try {
+            uuid = employeeService.saveEmployee(employeeModel);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return uuid;
+
     }
 
 }

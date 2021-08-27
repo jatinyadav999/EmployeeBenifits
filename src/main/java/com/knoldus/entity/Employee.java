@@ -11,7 +11,7 @@ public class Employee {
     @Id
     private int id;
     private String name;
-    private String dept;
+    private String department;
     private String email;
     private UUID token;
 
@@ -19,10 +19,10 @@ public class Employee {
 
     }
 
-    public Employee(int id,String name,String dept,String email,UUID token){
+    public Employee(int id,String name,String department,String email,UUID token){
         this.id = id;
         this.name = name;
-        this.dept = dept;
+        this.department = department;
         this.email = email;
         this.token = token;
 
@@ -44,12 +44,12 @@ public class Employee {
         this.name = name;
     }
 
-    public String getDept() {
-        return dept;
+    public String getDeptartment() {
+        return department;
     }
 
-    public void setDept(String dept) {
-        this.dept = dept;
+    public void setDept(String department) {
+        this.department = department;
     }
 
     public String getEmail() {
@@ -73,7 +73,7 @@ public class Employee {
         return "Employee{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", dept='" + dept + '\'' +
+                ", department='" + department + '\'' +
                 ", email='" + email + '\'' +
                 ", token='" + token + '\'' +
                 '}';
