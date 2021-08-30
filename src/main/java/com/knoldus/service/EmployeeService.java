@@ -15,6 +15,7 @@ import java.math.*;
 public class EmployeeService {
     @Autowired
     private EmployeeRepository employeeRepository;
+
     
     public UUID saveEmployee(EmployeeModel employeeModel) throws Exception{
       UUID   token = generateUuid();
@@ -24,7 +25,8 @@ public class EmployeeService {
         employee.setDept(employeeModel.getDept());
         employee.setEmail(employeeModel.getEmail());
         String employeeEmail = employee.getEmail();
-        if(employeeEmail.contains("@gmail.com")) {
+        String regexEmail = "^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$";
+        if(employeeEmail.matches(regexEmail)) {
             employee.setToken(token);
         }
         else{
