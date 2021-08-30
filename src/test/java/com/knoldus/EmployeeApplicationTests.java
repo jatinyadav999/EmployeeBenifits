@@ -30,11 +30,6 @@ class EmployeeApplicationTests {
 	private EmployeeService employeeService;
 
 	@Test
-	void contextLoads() {
-	}
-
-
-	@Test
 	public void ifEmailIsValid() throws Exception{
 	UUID uuid =	employeeService.generateUuid();
 		Employee employee = new Employee(5,"Akshay","marketing","akshay.dhama@gmail.com",uuid);
@@ -46,7 +41,7 @@ class EmployeeApplicationTests {
 	public void ifEmailIsNotValid() throws Exception{
 		String message = "Please Provide The Valid Email";
 		EmployeeException employeeException = new EmployeeException("Please Provide The Valid Email");
-		Employee employee = new Employee(6,"AwaneeshDubey","Sales","awanees.dubey@byjus.com",null);
+		Employee employee = new Employee(6,"AwaneeshDubey","Sales","sample?examplemail@gmail.com",null);
 		when(employeeRepository.save(employee)).thenReturn(employee);
 		assertEquals(message,employeeException.getMessage());
 	}
