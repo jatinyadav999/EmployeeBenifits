@@ -1,0 +1,14 @@
+version: "3"
+services:
+  localhost:
+    image: mongo:latest
+    container_name: "employee"
+    ports:
+      - 27017:27017
+  Employee:
+    image: employee-docker.jar
+    container_name: employeeContainer
+    ports:
+      - 8080:8080
+    links:
+      - localhost
